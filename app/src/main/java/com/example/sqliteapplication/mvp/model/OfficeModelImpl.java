@@ -1,4 +1,4 @@
-package com.example.sqliteapplication.mvp.m;
+package com.example.sqliteapplication.mvp.model;
 
 
 import com.example.sqliteapplication.retrofithttp.RetroFactory;
@@ -23,6 +23,11 @@ public class OfficeModelImpl implements OfficeModel {
         String json = jsonObject.toString();
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), json);
         return RetroFactory.getInstance().login(requestBody);
+    }
+
+    @Override
+    public Observable getService(String type, String version) {
+        return RetroFactory.getInstance().getService(type,version);
     }
 
 

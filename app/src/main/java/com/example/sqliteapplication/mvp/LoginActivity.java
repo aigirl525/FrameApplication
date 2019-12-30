@@ -1,22 +1,21 @@
 package com.example.sqliteapplication.mvp;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.sqliteapplication.R;
-import com.example.sqliteapplication.mvp.p.LoginPresenter;
-import com.example.sqliteapplication.mvp.p.LoginPresenterImpl;
-import com.example.sqliteapplication.mvp.v.LoginView;
-import com.example.sqliteapplication.mvp.v.base.BaseMvpActivity;
+import com.example.sqliteapplication.mvp.presenter.LoginPresenter;
+import com.example.sqliteapplication.mvp.presenter.LoginPresenterImpl;
+import com.example.sqliteapplication.mvp.view.LoginView;
+import com.example.sqliteapplication.mvp.view.base.BaseMvpActivity;
 
 public class LoginActivity extends BaseMvpActivity<LoginView, LoginPresenter<LoginView>> implements LoginView {
 
-    private  LoginPresenter loginPresenter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        loginPresenter.login("123","123");
-
+        presenter.getService("AND","1.0.1");
     }
 
     @Override
@@ -24,25 +23,24 @@ public class LoginActivity extends BaseMvpActivity<LoginView, LoginPresenter<Log
 
     }
 
+    @Override
+    public void showGetServiceSucess() {
+        Log.e("123456","showGetServiceSucess");
+    }
+
 
     @Override
-    public LoginPresenter<LoginView> initPresenter() {
-        loginPresenter = new LoginPresenterImpl(this);
-        loginPresenter.attach(this);
-        return loginPresenter;
+    public LoginPresenter initPresenter() {
+        return new LoginPresenterImpl(this);
     }
 
     @Override
-    public LoginPresenter<LoginView> initActivity(Bundle savedInstanceState) {
-        return null;
-    }
+    public void initActivity(Bundle savedInstanceState) {
 
+    }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (loginPresenter != null){
-            loginPresenter.dettach();
-        }
     }
 }

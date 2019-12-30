@@ -10,6 +10,7 @@ import io.reactivex.Observable;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.http.Body;
+import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -29,8 +30,16 @@ public interface ApiService {
     @POST("getUser")
     Observable<BaseModel<User>> getUser(@FieldMap Map<String, String> map);
 
-    //https://gddev.highlight2018.com/police_alarm_service/jjApi/get_service_url?type=AND&version=1.0.1
+    //https://gddev.highlight2018.com/police_alarm_service/?type=AND&version=1.0.1
 
     @GET()
     Observable<ResponseBody> login(@Url String url, @Query("username") String type, @Query("password") String version);
+
+
+//    @FormUrlEncoded
+//    @POST("lyapi/queryVersion.do")
+//    Observable<UploadFileModel<VersionBean>> queryVersion(@Field("type") String type);
+
+    @GET("jjApi/get_service_url")
+    Observable<ResponseBody> getService(@Query("type") String type, @Query("version") String version);
 }

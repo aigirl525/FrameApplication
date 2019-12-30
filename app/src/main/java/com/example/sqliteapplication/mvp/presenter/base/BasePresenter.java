@@ -1,4 +1,4 @@
-package com.example.sqliteapplication.mvp.p.base;
+package com.example.sqliteapplication.mvp.presenter.base;
 
 public interface BasePresenter<V> {
     //绑定view，这个方法将会在activity中调用

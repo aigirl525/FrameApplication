@@ -1,14 +1,7 @@
-package com.example.sqliteapplication.mvp.p.base;
+package com.example.sqliteapplication.mvp.presenter.base;
 
 
-import android.app.Activity;
 import android.app.Dialog;
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.widget.Toast;
-
-import com.example.sqliteapplication.Util.NetworkUtil;
-import com.example.sqliteapplication.mvp.v.base.BaseMvpActivity;
 
 import java.lang.ref.WeakReference;
 
@@ -18,7 +11,6 @@ import io.reactivex.ObservableTransformer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
-import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
 public abstract class BasePresenterImpl<V> implements BasePresenter<V> {
@@ -69,11 +61,14 @@ public abstract class BasePresenterImpl<V> implements BasePresenter<V> {
 
     @Override
     public void onResume() {
+
     }
+
     @Override
     public V obtainView(){
         return  isAttach() ? weakReferenceView.get() : null;
     }
+
     @Override
     public boolean isAttach(){
         return weakReferenceView != null && weakReferenceView.get() != null;
