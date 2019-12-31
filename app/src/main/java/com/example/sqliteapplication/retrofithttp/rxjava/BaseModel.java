@@ -34,4 +34,13 @@ public class BaseModel<E> implements Serializable {
     public boolean isSuccess(){
         return code == 200;
     }
+
+    @Override
+    public String toString() {
+        return "BaseModel{" +
+                "code=" + code +
+                ", message='" + message + '\'' +
+                ", data=" + data +
+                '}';
+    }
 }

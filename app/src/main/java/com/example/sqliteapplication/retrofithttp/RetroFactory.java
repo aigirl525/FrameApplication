@@ -29,7 +29,7 @@ public class RetroFactory {
     private static ApiService retrofitService;
 
     public static ApiService getInstance() {
-        String baseUrl = "https://gddev.highlight2018.com/police_alarm_service/";
+        String baseUrl = "https://gddev.highlight2018.com/";
         if (retrofitService == null) {
             synchronized (RetroFactory.class) {
                 request = new Request.Builder()

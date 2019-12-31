@@ -8,6 +8,7 @@ import com.example.sqliteapplication.mvp.presenter.LoginPresenter;
 import com.example.sqliteapplication.mvp.presenter.LoginPresenterImpl;
 import com.example.sqliteapplication.mvp.view.LoginView;
 import com.example.sqliteapplication.mvp.view.base.BaseMvpActivity;
+import com.example.sqliteapplication.retrofithttp.rxjava.BaseModel;
 
 public class LoginActivity extends BaseMvpActivity<LoginView, LoginPresenter<LoginView>> implements LoginView {
 
@@ -15,17 +16,18 @@ public class LoginActivity extends BaseMvpActivity<LoginView, LoginPresenter<Log
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        presenter.getService("AND","1.0.1");
+        presenter.getService(pd,"AND","1.0.1");
+        presenter.queryVersion(pd,"AND");
     }
 
     @Override
-    public void showLoginDialog() {
-
+    public void showVersionBean(VersionBean versionBean) {
+       Log.e("123456",versionBean.toString());
     }
 
     @Override
-    public void showGetServiceSucess() {
-        Log.e("123456","showGetServiceSucess");
+    public void showGetServiceSucess(String responseStr) {
+        Log.e("123456",responseStr);
     }
 
 

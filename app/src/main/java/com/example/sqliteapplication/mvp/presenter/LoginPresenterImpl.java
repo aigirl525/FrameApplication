@@ -4,10 +4,12 @@ import android.app.Dialog;
 import android.content.Context;
 import android.util.Log;
 
+import com.example.sqliteapplication.mvp.VersionBean;
 import com.example.sqliteapplication.mvp.model.OfficeModel;
 import com.example.sqliteapplication.mvp.model.OfficeModelImpl;
 import com.example.sqliteapplication.mvp.presenter.base.BasePresenterImpl;
 import com.example.sqliteapplication.mvp.view.LoginView;
+import com.example.sqliteapplication.retrofithttp.rxjava.BaseModel;
 import com.example.sqliteapplication.retrofithttp.rxjava.BaseObserver;
 import com.example.sqliteapplication.retrofithttp.rxjava.BaseObserverResponseBodyNormalHttp;
 import com.example.sqliteapplication.retrofithttp.rxjava.User;
@@ -33,13 +35,14 @@ public class LoginPresenterImpl extends BasePresenterImpl<LoginView> implements 
     }
 
     @Override
-    public void login(String username, String password) {
-        officeModel.login(username,password).compose(composeFunction)
-                .subscribe(new BaseObserver<User>(context,pd) {
+    public void queryVersion(Dialog dialog,String type) {
+        setPd(dialog);
+        String url = "https://gddev.highlight2018.com/webchat_gongan_api/lyapi/queryVersion.do";
+        officeModel.queryVersion(url,type).compose(composeFunction)
+                .subscribe(new BaseObserver<VersionBean>(context,pd) {
                     @Override
-                    public void onHandleSuccess(User o) {
-
-                        obtainView().showLoginDialog();
+                    public void onHandleSuccess(VersionBean versionBean) {
+                        obtainView().showVersionBean(versionBean);
                     }
 
                 });
@@ -47,13 +50,18 @@ public class LoginPresenterImpl extends BasePresenterImpl<LoginView> implements 
     }
 
     @Override
-    public void getService(String type, String version) {
+    public void getService(Dialog dialog,String type, String version) {
+        setPd(dialog);
         officeModel.getService(type,version).compose(composeFunction)
                 .subscribe(new BaseObserverResponseBodyNormalHttp(context,pd){
 
                     @Override
                     public void onHandleSuccess(ResponseBody t) {
-                        obtainView().showGetServiceSucess();
+                        try{
+                            obtainView().showGetServiceSucess(t.string());
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
                     }
                 }  );
     }

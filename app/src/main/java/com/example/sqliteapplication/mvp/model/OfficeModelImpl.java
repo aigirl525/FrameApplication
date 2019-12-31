@@ -13,16 +13,8 @@ import okhttp3.RequestBody;
 public class OfficeModelImpl implements OfficeModel {
 
     @Override
-    public Observable login(String username, String password) {
-        JSONObject jsonObject = new JSONObject();
-        try {
-            jsonObject.put("username", "");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        String json = jsonObject.toString();
-        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), json);
-        return RetroFactory.getInstance().login(requestBody);
+    public Observable queryVersion(String url , String type) {
+        return RetroFactory.getInstance().queryVersion(url,type);
     }
 
     @Override
