@@ -2,17 +2,14 @@ package com.example.sqliteapplication.mvp.presenter;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.util.Log;
 
 import com.example.sqliteapplication.mvp.VersionBean;
 import com.example.sqliteapplication.mvp.model.OfficeModel;
 import com.example.sqliteapplication.mvp.model.OfficeModelImpl;
 import com.example.sqliteapplication.mvp.presenter.base.BasePresenterImpl;
 import com.example.sqliteapplication.mvp.view.LoginView;
-import com.example.sqliteapplication.retrofithttp.rxjava.BaseModel;
 import com.example.sqliteapplication.retrofithttp.rxjava.BaseObserver;
 import com.example.sqliteapplication.retrofithttp.rxjava.BaseObserverResponseBodyNormalHttp;
-import com.example.sqliteapplication.retrofithttp.rxjava.User;
 
 import okhttp3.ResponseBody;
 

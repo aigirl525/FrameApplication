@@ -12,7 +12,7 @@ public class BaseDaoFactory {
 
     private  BaseDaoFactory(){
         //初始化数据库路径
-        sqliteDataBasePath = "data/data/com.example.sqliteapplication/lwj.db";
+        sqliteDataBasePath = "data/data/com.example.sqliteapplication/databases/lwj.db";
         sqLiteDatabase = SQLiteDatabase.openOrCreateDatabase(sqliteDataBasePath,null);
     }
 

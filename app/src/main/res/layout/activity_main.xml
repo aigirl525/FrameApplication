@@ -7,13 +7,84 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/sqlite_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="手写数据库框架!"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:onClick="click"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf= "@id/sqlite_tv"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
 
+        <Button
+            android:id="@+id/btn_insert_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="插入一个"
+            />
+
+        <Button
+            android:id="@+id/btn_insert_many"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="插入多个"
+            />
+        <Button
+            android:id="@+id/btn_alter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="修改"
+            />
+        <Button
+            android:id="@+id/btn_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="删除"
+            />
+
+        <Button
+            android:id="@+id/btn_delete_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="删除所有"
+            />
+
+        <Button
+            android:id="@+id/btn_check_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="查找一个"
+            />
+
+        <Button
+            android:id="@+id/btn_check_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="查找全部"
+            />
+
+        <Button
+            android:id="@+id/btn_query_native_sql"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="使用native sql进行条件查询"
+            />
+
+        <Button
+            android:id="@+id/btn_query_builder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="使用queryBuilder进行条件查询"
+            />
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

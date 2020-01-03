@@ -134,15 +134,15 @@ public  class BaseDao<T> implements IBaseDao<T> {
         for (Field field : fields){
             Class type = field.getType();
             if (type == String.class) {
-                stringBuffer.append(field.getAnnotation(DbField.class).value() + "TEXT,");
+                stringBuffer.append(field.getAnnotation(DbField.class).value() + " TEXT,");
             } else if (type == Integer.class) {
-                stringBuffer.append(field.getAnnotation(DbField.class).value() + "INTEGER,");
+                stringBuffer.append(field.getAnnotation(DbField.class).value() + " INTEGER,");
             } else if (type == Double.class) {
-                stringBuffer.append(field.getAnnotation(DbField.class).value() + "DOUBLE,");
+                stringBuffer.append(field.getAnnotation(DbField.class).value() + " DOUBLE,");
             } else if (type == Long.class) {
-                stringBuffer.append(field.getAnnotation(DbField.class).value() + "LONG,");
+                stringBuffer.append(field.getAnnotation(DbField.class).value() + " LONG,");
             } else if (type == byte[].class) {//图片格式
-                stringBuffer.append(field.getAnnotation(DbField.class).value() + "BLOB,");
+                stringBuffer.append(field.getAnnotation(DbField.class).value() + " BLOB,");
             } else {
 //                不支持的类型
                 continue;
