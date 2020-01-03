@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.sqliteapplication.greendao.Person;
@@ -18,6 +19,7 @@ import java.util.List;
 public class MainActivity extends Activity implements View.OnClickListener{
     private static final String TAG = "MainActivity" ;
     PersonUtils mPersonUtils;
+    TextView textView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +33,8 @@ public class MainActivity extends Activity implements View.OnClickListener{
         findViewById(R.id.btn_check_all).setOnClickListener(this);
         findViewById(R.id.btn_query_native_sql).setOnClickListener(this);
         findViewById(R.id.btn_query_builder).setOnClickListener(this);
-
+        textView = findViewById(R.id.gradle);
+        textView.setText(Constants.URL);
         mPersonUtils = new PersonUtils(this);
     }
 

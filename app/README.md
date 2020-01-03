@@ -7,3 +7,6 @@ greendao
 
 手写数据库框架
 https://blog.csdn.net/ytfunnysite/article/details/80716487
+
+Android Studio打包全攻略---从入门到精通
+https://blog.csdn.net/zivensonice/article/details/51672846

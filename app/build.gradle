@@ -11,12 +11,39 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        //版本名后面添加一句话，意思就是flavor dimension 它的维度就是该版本号，这样维度就是都是统一的了
+        flavorDimensions "versionCode"
     }
+//    signingConfigs {
+//        config {
+//            keyAlias 'maker'
+//            keyPassword '1234make'
+//            storeFile file('/Users/Nevermore/AndroidStudioProjects/Blog/jks/makeapp.jks')
+//            storePassword 'make1234'
+//        }
+//    }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+          //  signingConfig signingConfigs.config
         }
+    }
+    productFlavors {
+//        uc {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "uc"]}
+//        _360 {}
+//        baidu {}
+//        yyb {}
+        xiaomi {}
+        urlonline{
+            applicationId "com.online.sqliteapplication"
+        }
+        urltest{
+            applicationId "com.test.sqliteapplication"
+        }
+    }
+    productFlavors.all {flavor ->
+        flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE:name]
     }
 }
 
