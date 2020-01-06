@@ -126,6 +126,7 @@ public  class BaseDao<T> implements IBaseDao<T> {
     }
     private String getCreateSql(){
 
+
         StringBuffer stringBuffer = new StringBuffer();
         stringBuffer.append("create table if not exists ");
         stringBuffer.append(tabName + "(");
@@ -160,11 +161,17 @@ public  class BaseDao<T> implements IBaseDao<T> {
         Map<String,String> map = getValues(t);
         ContentValues contentValues = getContentValues(map);
         long result = sqLiteDatabase.insert(tabName,null ,contentValues);
+
         return result;
     }
 
     @Override
     public Long update(T entity, T where) {
         return null;
+    }
+
+    @Override
+    public void close() {
+        if (sqLiteDatabase.isOpen())sqLiteDatabase.close();
     }
 }

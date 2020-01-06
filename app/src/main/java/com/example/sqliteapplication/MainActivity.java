@@ -1,6 +1,5 @@
 package com.example.sqliteapplication;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -9,6 +8,7 @@ import android.widget.Toast;
 
 import com.example.sqliteapplication.greendao.Person;
 import com.example.sqliteapplication.greendao.PersonUtils;
+import com.example.sqliteapplication.mvp.view.base.BaseActivity;
 import com.example.sqliteapplication.sqlite.BaseDao;
 import com.example.sqliteapplication.sqlite.BaseDaoFactory;
 import com.example.sqliteapplication.sqlite.entity.User;
@@ -16,7 +16,7 @@ import com.example.sqliteapplication.sqlite.entity.User;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends Activity implements View.OnClickListener{
+public class MainActivity extends BaseActivity implements View.OnClickListener{
     private static final String TAG = "MainActivity" ;
     PersonUtils mPersonUtils;
     TextView textView;
@@ -34,16 +34,17 @@ public class MainActivity extends Activity implements View.OnClickListener{
         findViewById(R.id.btn_query_native_sql).setOnClickListener(this);
         findViewById(R.id.btn_query_builder).setOnClickListener(this);
         textView = findViewById(R.id.gradle);
-        textView.setText(Constants.URL);
+       // textView.setText(Constants.URL);
         mPersonUtils = new PersonUtils(this);
     }
-
+    BaseDao<User> dao;
     public void click(View view){
-        BaseDao<User> dao = BaseDaoFactory.getInstance().getBaseDao(User.class);
-        Long l = dao.insert(new User(102,"ytf","123456"));
-       // dao.insert(new User(111,"yangtianfu","000000"));
-       // dao.insert(new User(100,"杨天福","999999"));
+         dao = BaseDaoFactory.getInstance().getBaseDao(User.class);
+        Long l = dao.insert(new User(105,"ytf","123456"));
+        dao.insert(new User(111,"yangtianfu","000000"));
+        dao.insert(new User(104,"杨天福","999999"));
         Toast.makeText(this, "建表成功"+l, Toast.LENGTH_SHORT).show();
+
     }
     @Override
     public void onClick(View view)
@@ -111,5 +112,11 @@ public class MainActivity extends Activity implements View.OnClickListener{
                 }
                 break;
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        dao.close();
     }
 }

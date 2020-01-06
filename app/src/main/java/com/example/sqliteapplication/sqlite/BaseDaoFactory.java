@@ -1,19 +1,22 @@
 package com.example.sqliteapplication.sqlite;
 
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
+
+import com.example.sqliteapplication.greendao.MyApplication;
 
 /**
  * 提供给调用层使用的对外接口
  */
 public class BaseDaoFactory {
     private SQLiteDatabase sqLiteDatabase;
-    private  String sqliteDataBasePath;
     private static  final BaseDaoFactory instance = new BaseDaoFactory();
 
     private  BaseDaoFactory(){
-        //初始化数据库路径
-        sqliteDataBasePath = "data/data/com.example.sqliteapplication/databases/lwj.db";
-        sqLiteDatabase = SQLiteDatabase.openOrCreateDatabase(sqliteDataBasePath,null);
+       // String sqliteDataBasePath="data/data/com.example.sqliteapplication/ytf.db";
+        Log.e("getSqliteDataBasePath",MyApplication.getSqliteDataBasePath());
+       sqLiteDatabase = SQLiteDatabase.openOrCreateDatabase(MyApplication.getSqliteDataBasePath(),null);
+        //sqLiteDatabase = SQLiteDatabase.openDatabase(MyApplication.getSqliteDataBasePath(), null, SQLiteDatabase.OPEN_READWRITE);
     }
 
     public static  BaseDaoFactory getInstance() {
