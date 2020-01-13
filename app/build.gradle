@@ -29,22 +29,22 @@ android {
             //  signingConfig signingConfigs.config
         }
     }
-    productFlavors {
+//    productFlavors {
 //        uc {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "uc"]}
 //        _360 {}
 //        baidu {}
 //        yyb {}
-        xiaomi {}
-        urlonline {
-            applicationId "com.online.sqliteapplication"
-        }
-        urltest {
-            applicationId "com.test.sqliteapplication"
-        }
-    }
-    productFlavors.all { flavor ->
-        flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
-    }
+//        xiaomi {}
+//        urlonline {
+//            applicationId "com.online.sqliteapplication"
+//        }
+//        urltest {
+//            applicationId "com.test.sqliteapplication"
+//        }
+//    }
+//    productFlavors.all { flavor ->
+//        flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+//    }
 }
 
 greendao {

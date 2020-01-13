@@ -9,12 +9,18 @@ import com.example.sqliteapplication.sqlite.annotations.DbTable;
  */
 @DbTable("tb_user")//表名
 public class User {
-    @DbField("_id")//字段名
+    @DbField("_id")//字段名 主键必须是_id，也可以不设置
     private Integer id;
     @DbField("name")
     private String name;
     @DbField("pwd")
     private String password;
+
+    public User() {
+    }
+    public User(Integer id) {
+        this.id = id;
+    }
 
     public User(Integer id, String name, String password) {
         this.id = id;

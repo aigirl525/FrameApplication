@@ -2,6 +2,7 @@ package com.example.sqliteapplication.greendao;
 
 import android.app.Application;
 
+
 import com.example.sqliteapplication.BuildConfig;
 
 import java.io.File;

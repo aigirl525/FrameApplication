@@ -33,24 +33,80 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         findViewById(R.id.btn_check_all).setOnClickListener(this);
         findViewById(R.id.btn_query_native_sql).setOnClickListener(this);
         findViewById(R.id.btn_query_builder).setOnClickListener(this);
+
+
+
+        findViewById(R.id.btn_save).setOnClickListener(this);
+        findViewById(R.id.btn_update).setOnClickListener(this);
+        findViewById(R.id.delete).setOnClickListener(this);
+        findViewById(R.id.deleteAll).setOnClickListener(this);
+        findViewById(R.id.btn_select).setOnClickListener(this);
+        findViewById(R.id.btn_selectAll).setOnClickListener(this);
         textView = findViewById(R.id.gradle);
        // textView.setText(Constants.URL);
         mPersonUtils = new PersonUtils(this);
     }
     BaseDao<User> dao;
-    public void click(View view){
-         dao = BaseDaoFactory.getInstance().getBaseDao(User.class);
-        Long l = dao.insert(new User(105,"ytf","123456"));
-        dao.insert(new User(111,"yangtianfu","000000"));
-        dao.insert(new User(104,"杨天福","999999"));
-        Toast.makeText(this, "建表成功"+l, Toast.LENGTH_SHORT).show();
-
-    }
+    User where;
+    User user;
+    List<User> query;
+    int delete;
     @Override
     public void onClick(View view)
     {
-        switch (view.getId())
-        {
+        dao = BaseDaoFactory.getInstance().getBaseDao(User.class);
+        switch (view.getId()){
+            case R.id.btn_save:
+                Long l = dao.insert(new User(1,"luo1","luo123"));
+                dao.insert(new User(2,"luo2","luo456"));
+                dao.insert(new User(3,"luo3","luo789"));
+                Toast.makeText(this, "建表成功"+l, Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.btn_update:
+                //更新条件
+                where = new User() ;
+                where.setName("luo3");
+                //更新为
+                user = new User() ;
+                user.setName("hanmeimei");
+                int update = dao.update(user,where);
+                Toast.makeText(this, "123update" + update, Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.delete:
+                //删除条件
+                where = new User() ;
+                where.setName( "luo2");
+                delete = dao.delete(where);
+                Toast.makeText(this, "123delete" + delete, Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.deleteAll:
+                //删除条件
+                where = new User() ;
+                delete = dao.delete(where);
+                Toast.makeText(this, "123delete" + delete, Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.btn_select:
+                where = new User(1);
+                query = dao.query(where);
+                for(User user : query){
+                    Toast.makeText(this, "123select"+ "name:"+user.getName()+",Password:"+user.getPassword(), Toast.LENGTH_SHORT).show();
+                    Log.e("123select","name:"+user.getName()+",Password:"+user.getPassword());
+                }
+                break;
+            case R.id.btn_selectAll:
+                where = new User();
+                query = dao.query(where);
+                for(User user : query){
+                    Toast.makeText(this, "123select"+ "name:"+user.getName()+",Password:"+user.getPassword(), Toast.LENGTH_SHORT).show();
+                    Log.e("123selectAll","name:"+user.getName()+",Password:"+user.getPassword());
+                }
+                break;
+
+
+
+
+
+
             case R.id.btn_insert_one:
                 mPersonUtils.insertPerson(new Person(null, "Google",
                         "http://7xi8d6.48096_n.jpg"));
