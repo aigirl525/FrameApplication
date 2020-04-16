@@ -26,3 +26,4 @@ Android设备,连上adb,debug环境,打开Device File Explorer,打开对应的�
 SQLiteOpenHelper
 该类是SQLiteDatabase一个辅助类。这个类主要生成一  个数据库，并对数据库的版本进行管理。当在程序当中调用这个类的方法getWritableDatabase()或者 getReadableDatabase()方法的时候，如果当时没有数据，那么Android系统就会自动生成一个数据库。 SQLiteOpenHelper 是一个抽象类，我们通常需要继承它，并且实现里面的3个函数：
 
+修改第一次
